@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <!-- Hero -->
+  <section class="recipe-detail-hero" style="padding:60px 0;">
+    <div class="container position-relative" style="z-index:1">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <h1 style="font-size:3rem;font-weight:800;">About RecipeAI 🍳</h1>
+          <p style="font-size:1.1rem;color:rgba(255,255,255,0.8);margin-top:12px;line-height:1.7">
+            A smart, rule-based recipe generator built as an Innovative Assignment for
+            the Web Technology with UI/UX course. Demonstrates how intelligent behavior
+            can be simulated entirely in the browser without any backend or ML models.
+          </p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <div class="meta-pill"><span class="meta-value">4th</span><span class="meta-label">Semester</span></div>
+            <div class="meta-pill"><span class="meta-value">2025–26</span><span class="meta-label">Academic Year</span></div>
+            <div class="meta-pill"><span class="meta-value">2010043228</span><span class="meta-label">Course Code</span></div>
+          </div>
+        </div>
+        <div class="col-lg-4 d-none d-lg-flex justify-content-center">
+          <div style="font-size:9rem;filter:drop-shadow(0 10px 30px rgba(0,0,0,0.3))">👨‍🍳</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container section-gap">
+
+    <!-- Project Overview -->
+    <div class="row g-4 mb-5">
+      <div class="col-12">
+        <h2 class="fw-bold mb-3">Project Overview</h2>
+        <div class="bg-white rounded-3 p-4 shadow-sm">
+          <p class="mb-3" style="font-size:1rem;line-height:1.8">
+            <strong>RecipeAI</strong> is a fully frontend-based web application that simulates artificial
+            intelligence using <strong>rule-based JavaScript logic</strong>. By selecting ingredients,
+            cuisine types, and dietary preferences, users receive instant recipe recommendations —
+            all without any backend server, external API, or machine learning framework.
+          </p>
+          <p class="mb-0 text-muted" style="line-height:1.8">
+            The project demonstrates how <em>intelligent behavior</em> can be simulated through
+            well-structured conditional logic, scoring algorithms, and data-driven programming.
+            The "AI" scores each recipe based on ingredient overlap, cuisine match, dietary
+            compliance, and spice preference — producing ranked results that feel genuinely
+            personalized.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- How the AI Works -->
+    <div class="mb-5">
+      <h2 class="fw-bold mb-4">🧠 How the Rule-Based AI Works</h2>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3">
+          <div class="bg-white rounded-3 p-4 shadow-sm text-center h-100">
+            <div style="font-size:2.5rem;margin-bottom:12px">📥</div>
+            <h5 class="fw-bold">1. Input Collection</h5>
+            <p class="text-muted" style="font-size:0.88rem">User selects ingredients, cuisine, diet type, spice level, and cooking time through a guided multi-step flow.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="bg-white rounded-3 p-4 shadow-sm text-center h-100">
+            <div style="font-size:2.5rem;margin-bottom:12px">⚖️</div>
+            <h5 class="fw-bold">2. Scoring Engine</h5>
+            <p class="text-muted" style="font-size:0.88rem">Each recipe gets scored: +40 pts per matching ingredient, +30 for cuisine, +20 for diet match, +10 for spice level.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="bg-white rounded-3 p-4 shadow-sm text-center h-100">
+            <div style="font-size:2.5rem;margin-bottom:12px">📊</div>
+            <h5 class="fw-bold">3. Ranking</h5>
+            <p class="text-muted" style="font-size:0.88rem">Recipes are sorted by total score descending. A "match percentage" is calculated for each result, displayed as a badge.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="bg-white rounded-3 p-4 shadow-sm text-center h-100">
+            <div style="font-size:2.5rem;margin-bottom:12px">✅</div>
+            <h5 class="fw-bold">4. Display</h5>
+            <p class="text-muted" style="font-size:0.88rem">Top-matching recipes are rendered dynamically with full details including ingredients, steps, and nutrition info.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technology Stack -->
+    <div class="mb-5">
+      <h2 class="fw-bold mb-4">🛠️ Technology Stack</h2>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">🌐</div>
+            <div>
+              <h6>HTML5</h6>
+              <p>Semantic markup, accessibility, structured content with proper heading hierarchy.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">🎨</div>
+            <div>
+              <h6>CSS3</h6>
+              <p>Custom properties (variables), animations, transitions, flexbox &amp; grid layouts.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">⚡</div>
+            <div>
+              <h6>JavaScript (ES6+)</h6>
+              <p>Rule-based AI matching engine, DOM manipulation, localStorage, sessionStorage.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">💎</div>
+            <div>
+              <h6>jQuery 3.7</h6>
+              <p>DOM traversal, event handling, AJAX-style async patterns, animations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">📱</div>
+            <div>
+              <h6>Bootstrap 5.3</h6>
+              <p>Responsive grid, utility classes, components — mobile-first design approach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="tech-card">
+            <div class="tech-icon">🎯</div>
+            <div>
+              <h6>Figma</h6>
+              <p>UI/UX prototype with 10 designed screens before implementation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features List -->
+    <div class="mb-5">
+      <h2 class="fw-bold mb-4">✨ Key Features</h2>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <ul style="list-style:none;padding:0">
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Multi-step recipe wizard</strong> — guided flow for ingredients → cuisine → preferences</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Rule-based AI matching</strong> — scoring algorithm produces personalized results</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>LocalStorage favorites</strong> — save and retrieve recipes across sessions</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Dynamic rendering</strong> — all content generated via JavaScript/jQuery</div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul style="list-style:none;padding:0">
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Responsive design</strong> — works perfectly on mobile, tablet, and desktop</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Reusable components</strong> — navbar, footer, and headers via jQuery injection</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>Print support</strong> — recipe detail page is print-friendly</div>
+            </li>
+            <li class="mb-3 d-flex align-items-start gap-3">
+              <span style="color:var(--accent);font-size:1.1rem">✅</span>
+              <div><strong>No backend required</strong> — 100% frontend, runs from any static host</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Info -->
+    <div class="bg-white rounded-3 p-4 shadow-sm">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-8">
+          <h5 class="fw-bold mb-2">📚 Course Information</h5>
+          <table class="table table-borderless mb-0" style="font-size:0.9rem">
+            <tr><td class="fw-bold text-muted ps-0" style="width:180px">Institution:</td><td>Silver Oak University, Ahmedabad</td></tr>
+            <tr><td class="fw-bold text-muted ps-0">Department:</td><td>School of Technology, Design &amp; Computer Application</td></tr>
+            <tr><td class="fw-bold text-muted ps-0">Programme:</td><td>Bachelor of Technology — CE / CSE / IT</td></tr>
+            <tr><td class="fw-bold text-muted ps-0">Course:</td><td>Web Technology with UI/UX</td></tr>
+            <tr><td class="fw-bold text-muted ps-0">Course Code:</td><td>2010043228</td></tr>
+            <tr><td class="fw-bold text-muted ps-0">Semester:</td><td>4th — Academic Year 2025–26</td></tr>
+          </table>
+        </div>
+        <div class="col-md-4 text-center">
+          <div style="font-size:5rem;line-height:1">🎓</div>
+          <a href="contact.html" class="btn btn-primary-custom mt-3">Get in Touch</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

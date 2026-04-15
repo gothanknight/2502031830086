@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Detail — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    @media print {
+      .navbar-custom, [data-component="footer"], .action-btns, .breadcrumb { display: none !important; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <!-- Breadcrumb -->
+  <div class="container py-2 breadcrumb">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0" style="font-size:0.85rem">
+        <li class="breadcrumb-item"><a href="index.html" class="text-primary">Home</a></li>
+        <li class="breadcrumb-item"><a href="results.html" class="text-primary">Results</a></li>
+        <li class="breadcrumb-item active" id="breadcrumbName">Recipe</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Hero Banner -->
+  <div class="recipe-detail-hero">
+    <div class="container position-relative" style="z-index:1">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <div id="recipeTags" class="d-flex flex-wrap gap-2 mb-3"></div>
+          <h1 id="recipeName">Loading…</h1>
+          <p id="recipeDesc"></p>
+
+          <!-- Meta pills -->
+          <div class="row g-2 mt-3">
+            <div class="col-auto">
+              <div class="meta-pill">
+                <span class="meta-value" id="recipeTime">—</span>
+                <span class="meta-label">Prep + Cook</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="meta-pill">
+                <span class="meta-value" id="recipeServings">—</span>
+                <span class="meta-label">Servings</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="meta-pill">
+                <span class="meta-value" id="recipeSpice">—</span>
+                <span class="meta-label">Spice Level</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="meta-pill">
+                <span class="meta-value" id="recipeRating">—</span>
+                <span class="meta-label">Rating</span>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="meta-pill">
+                <span class="meta-value" id="recipeDiet">—</span>
+                <span class="meta-label">Diet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recipe "image" placeholder -->
+        <div class="col-lg-5 d-none d-lg-flex justify-content-center align-items-center">
+          <div style="width:220px;height:220px;background:rgba(255,255,255,0.12);border-radius:50%;
+                      display:flex;align-items:center;justify-content:center;font-size:7rem;
+                      box-shadow:0 8px 32px rgba(0,0,0,0.2);">
+            <span id="recipeEmoji">🍽️</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container section-gap-sm recipe-detail-wrap">
+    <div class="row g-4">
+
+      <!-- Ingredients -->
+      <div class="col-lg-5">
+        <div class="bg-white rounded-3 p-4 shadow-sm h-100">
+          <h4 class="fw-bold mb-3">📦 Ingredients</h4>
+          <div id="ingredientsList"></div>
+        </div>
+      </div>
+
+      <!-- Instructions -->
+      <div class="col-lg-7">
+        <h4 class="fw-bold mb-3">📋 Cooking Instructions</h4>
+        <div id="stepsList"></div>
+
+        <!-- Action buttons -->
+        <div class="d-flex gap-3 flex-wrap mt-4 action-btns">
+          <button class="btn btn-primary-custom btn-lg" id="favBtn">♡ Save to Favorites</button>
+          <a href="results.html" class="btn btn-secondary-custom btn-lg">← Back to Results</a>
+          <button class="btn btn-outline-secondary btn-lg" id="printBtn">🖨 Print Recipe</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related Recipes -->
+    <div class="mt-5">
+      <h4 class="fw-bold mb-4">You Might Also Like</h4>
+      <div class="row g-3" id="relatedRecipes"></div>
+    </div>
+  </div>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    $(document).ready(function () {
+      initDetailPage();
+
+      // Render related recipes (same cuisine, different recipe)
+      const params = new URLSearchParams(window.location.search);
+      const currentId = params.get("id");
+      const current = RECIPES_DB.find(r => r.id === currentId);
+
+      if (current) {
+        $("#breadcrumbName").text(current.name);
+        const related = RECIPES_DB
+          .filter(r => r.cuisine === current.cuisine && r.id !== currentId)
+          .slice(0, 3);
+
+        related.forEach(r => {
+          const isFav = JSON.parse(localStorage.getItem("recipeai_favorites") || "[]").includes(r.id);
+          $("#relatedRecipes").append(`
+            <div class="col-md-4">
+              <div class="recipe-card">
+                <div class="card-img-wrap" style="height:120px">
+                  <span>${r.emoji}</span>
+                </div>
+                <div class="card-body">
+                  <h6 class="card-title">${r.name}</h6>
+                  <div class="card-meta"><span>⏱ ${r.time} min</span><span>⭐ ${r.rating}</span></div>
+                  <div class="card-actions mt-2">
+                    <button class="btn btn-sm btn-secondary-custom flex-grow-1"
+                      onclick="location.href='recipe-detail.html?id=${r.id}'">View</button>
+                    <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${r.id}">${isFav ? '❤️' : '♡'}</button>
+                  </div>
+                </div>
+              </div>
+            </div>`);
+        });
+
+        if (related.length === 0) $("#relatedRecipes").closest(".mt-5").hide();
+      }
+    });
+  </script>
+</body>
+</html>

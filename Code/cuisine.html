@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Cuisine — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <div class="page-header">
+    <div class="container position-relative" style="z-index:1">
+      <h1>🌍 Select Your Cuisine</h1>
+      <p>Pick a cuisine style — we'll match it with your ingredients for the best recipes!</p>
+    </div>
+  </div>
+
+  <div data-component="step-progress" data-active="2"></div>
+
+  <div class="container section-gap-sm">
+
+    <div class="row align-items-center mb-4">
+      <div class="col">
+        <h4 class="fw-bold mb-1">Popular Cuisines</h4>
+        <p class="text-muted mb-0">Click a cuisine card to select it. Leave unselected to show all cuisines.</p>
+      </div>
+      <div class="col-auto">
+        <button class="choice-chip selected" id="clearCuisine" onclick="clearSelection()">
+          ✕ Show All Cuisines
+        </button>
+      </div>
+    </div>
+
+    <div class="row g-3 mb-4" id="cuisineGrid">
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="indian"
+          style="background:linear-gradient(135deg,#fff8f0,#fff0e0);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇮🇳</div>
+          <h5>Indian</h5>
+          <p>Aromatic spices, curries &amp; diverse regional flavors</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#f0e0d0;color:#c04000;font-size:0.7rem;">Spicy</span>
+            <span class="badge" style="background:#e0f0e0;color:#207040;font-size:0.7rem;">Vegetarian Friendly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="italian"
+          style="background:linear-gradient(135deg,#f0f5ff,#e8f0ff);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇮🇹</div>
+          <h5>Italian</h5>
+          <p>Pasta, pizza, risotto &amp; Mediterranean delights</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#e0e8f8;color:#204080;font-size:0.7rem;">Classic</span>
+            <span class="badge" style="background:#f8f0e0;color:#806000;font-size:0.7rem;">Comfort Food</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="chinese"
+          style="background:linear-gradient(135deg,#fff0f0,#ffe8e8);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇨🇳</div>
+          <h5>Chinese</h5>
+          <p>Stir-fries, dumplings &amp; bold umami flavors</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#f8e0e0;color:#800020;font-size:0.7rem;">Umami</span>
+            <span class="badge" style="background:#e8f8e8;color:#207040;font-size:0.7rem;">Quick Cook</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="mexican"
+          style="background:linear-gradient(135deg,#f0fff0,#e8ffe8);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇲🇽</div>
+          <h5>Mexican</h5>
+          <p>Tacos, burritos, salsas &amp; vibrant spices</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#e0f8e0;color:#206020;font-size:0.7rem;">Street Food</span>
+            <span class="badge" style="background:#fff0e0;color:#806020;font-size:0.7rem;">Bold Flavors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="japanese"
+          style="background:linear-gradient(135deg,#f0f8ff,#e8f4ff);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇯🇵</div>
+          <h5>Japanese</h5>
+          <p>Sushi, ramen, tempura &amp; umami-rich dishes</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#e0eef8;color:#204060;font-size:0.7rem;">Artisan</span>
+            <span class="badge" style="background:#f0f8e0;color:#406020;font-size:0.7rem;">Healthy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="greek"
+          style="background:linear-gradient(135deg,#f8f0ff,#f0e8ff);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇬🇷</div>
+          <h5>Greek</h5>
+          <p>Fresh salads, grilled meats &amp; olive oil richness</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#f0e0f8;color:#602080;font-size:0.7rem;">Mediterranean</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="thai"
+          style="background:linear-gradient(135deg,#fffdf0,#fff8e0);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇹🇭</div>
+          <h5>Thai</h5>
+          <p>Sweet, sour, salty &amp; spicy balance in every bite</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#f8f0d8;color:#806010;font-size:0.7rem;">Aromatic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="cuisine-card" data-id="moroccan"
+          style="background:linear-gradient(135deg,#fff0f4,#ffe8ee);">
+          <div class="sel-check">✓</div>
+          <div class="cuisine-emoji">🇲🇦</div>
+          <h5>Moroccan</h5>
+          <p>Tagines, couscous &amp; exotic North African spices</p>
+          <div class="mt-2 d-flex gap-1 flex-wrap justify-content-center">
+            <span class="badge" style="background:#f8e0e8;color:#802040;font-size:0.7rem;">Exotic</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Selected summary -->
+    <div id="cuisineInfo" class="alert mb-4"
+      style="background:var(--primary-lt);border:1.5px solid var(--primary);border-radius:10px;display:none">
+      <strong class="text-primary">Selected: <span id="cuisineName"></span></strong>
+      <span class="text-muted ms-2">— click again to deselect</span>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <a href="ingredients.html" class="btn btn-outline-secondary">← Back</a>
+      <button class="btn btn-primary-custom btn-lg" id="nextBtn">
+        Next: Set Preferences →
+      </button>
+    </div>
+  </div>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Restore saved selection
+      const saved = sessionStorage.getItem("selectedCuisine");
+      if (saved) {
+        $(`.cuisine-card[data-id="${saved}"]`).addClass("selected");
+        $("#cuisineInfo").show();
+        $("#cuisineName").text(saved.charAt(0).toUpperCase() + saved.slice(1));
+      }
+
+      $(".cuisine-card").on("click", function () {
+        const wasSelected = $(this).hasClass("selected");
+        $(".cuisine-card").removeClass("selected");
+        if (!wasSelected) {
+          $(this).addClass("selected");
+          const id = $(this).data("id");
+          const label = id.charAt(0).toUpperCase() + id.slice(1);
+          $("#cuisineInfo").show();
+          $("#cuisineName").text(label);
+        } else {
+          $("#cuisineInfo").hide();
+          $("#cuisineName").text("");
+        }
+      });
+
+      $("#nextBtn").on("click", function () {
+        const selected = $(".cuisine-card.selected").data("id") || "";
+        sessionStorage.setItem("selectedCuisine", selected);
+        window.location.href = "preferences.html";
+      });
+    });
+
+    function clearSelection() {
+      $(".cuisine-card").removeClass("selected");
+      sessionStorage.removeItem("selectedCuisine");
+      $("#cuisineInfo").hide();
+    }
+  </script>
+</body>
+</html>

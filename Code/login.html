@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <section style="background:var(--secondary);min-height:100vh;display:flex;align-items:center;padding:60px 0;position:relative;overflow:hidden;">
+    <!-- Decorative circles -->
+    <div style="position:absolute;top:-100px;left:-100px;width:350px;height:350px;background:var(--primary);border-radius:50%;opacity:0.12;"></div>
+    <div style="position:absolute;bottom:-80px;right:-80px;width:280px;height:280px;background:var(--accent);border-radius:50%;opacity:0.1;"></div>
+
+    <div class="container position-relative" style="z-index:1">
+      <div class="row justify-content-center align-items-center g-4">
+
+        <!-- Left Panel -->
+        <div class="col-lg-5 d-none d-lg-block">
+          <h2 class="text-white fw-bold mb-3" style="font-size:2.4rem;">Welcome to<br>RecipeAI 🍳</h2>
+          <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.7;">
+            Log in to access your personalized recipe suggestions, saved favorites, and cooking preferences.
+          </p>
+          <ul class="mt-4" style="padding:0;list-style:none;">
+            <li class="mb-3" style="color:rgba(200,240,200,0.9);font-size:0.95rem;">✔ &nbsp;Personalized recipe suggestions</li>
+            <li class="mb-3" style="color:rgba(200,240,200,0.9);font-size:0.95rem;">✔ &nbsp;Save unlimited favorite recipes</li>
+            <li class="mb-3" style="color:rgba(200,240,200,0.9);font-size:0.95rem;">✔ &nbsp;Filter by diet, spice &amp; cuisine</li>
+            <li class="mb-3" style="color:rgba(200,240,200,0.9);font-size:0.95rem;">✔ &nbsp;Works 100% offline in your browser</li>
+          </ul>
+          <div class="mt-5" style="font-size:5rem;line-height:1;">🥘</div>
+        </div>
+
+        <!-- Auth Card -->
+        <div class="col-lg-5 col-md-8 col-sm-10">
+          <div class="auth-card">
+
+            <!-- Tabs -->
+            <div class="auth-tabs mb-4">
+              <button class="auth-tab active" id="loginTab">Login</button>
+              <button class="auth-tab" id="signupTab">Sign Up</button>
+            </div>
+
+            <!-- LOGIN FORM -->
+            <div id="loginForm">
+              <div class="mb-3">
+                <label class="form-label-custom">Email Address</label>
+                <input type="email" class="form-control-custom" id="loginEmail" placeholder="Enter your email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label-custom">Password</label>
+                <input type="password" class="form-control-custom" id="loginPassword" placeholder="Enter your password">
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label text-muted" for="rememberMe" style="font-size:0.85rem">Remember me</label>
+                </div>
+                <a href="#" class="text-primary" style="font-size:0.85rem;font-weight:600">Forgot Password?</a>
+              </div>
+              <button class="btn btn-primary-custom w-100 py-3 mb-3" id="loginBtn" onclick="handleLogin()">
+                Login
+              </button>
+              <div class="divider">or</div>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <button class="social-btn" onclick="socialLogin('Google')">
+                    <span>🔵</span> Google
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button class="social-btn social-btn-fb" onclick="socialLogin('Facebook')">
+                    <span>📘</span> Facebook
+                  </button>
+                </div>
+              </div>
+              <p class="text-center text-muted mb-0" style="font-size:0.88rem">
+                Don't have an account?
+                <a href="#" class="text-primary fw-bold" onclick="switchTab('signup')">Sign Up</a>
+              </p>
+            </div>
+
+            <!-- SIGNUP FORM -->
+            <div id="signupForm" style="display:none">
+              <div class="row g-3 mb-3">
+                <div class="col-6">
+                  <label class="form-label-custom">First Name</label>
+                  <input type="text" class="form-control-custom" id="signupFirst" placeholder="First name">
+                </div>
+                <div class="col-6">
+                  <label class="form-label-custom">Last Name</label>
+                  <input type="text" class="form-control-custom" id="signupLast" placeholder="Last name">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label-custom">Email Address</label>
+                <input type="email" class="form-control-custom" id="signupEmail" placeholder="Enter your email">
+              </div>
+              <div class="mb-3">
+                <label class="form-label-custom">Password</label>
+                <input type="password" class="form-control-custom" id="signupPassword" placeholder="Create a password">
+              </div>
+              <div class="mb-4">
+                <label class="form-label-custom">Confirm Password</label>
+                <input type="password" class="form-control-custom" id="signupConfirm" placeholder="Confirm your password">
+              </div>
+              <div class="form-check mb-4">
+                <input type="checkbox" class="form-check-input" id="agreeTerms">
+                <label class="form-check-label text-muted" for="agreeTerms" style="font-size:0.83rem">
+                  I agree to the <a href="#" class="text-primary">Terms of Service</a> and
+                  <a href="#" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+              <button class="btn btn-primary-custom w-100 py-3 mb-3" onclick="handleSignup()">Create Account</button>
+              <p class="text-center text-muted mb-0" style="font-size:0.88rem">
+                Already have an account?
+                <a href="#" class="text-primary fw-bold" onclick="switchTab('login')">Login</a>
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Note about auth -->
+          <div class="text-center mt-3">
+            <small style="color:rgba(255,255,255,0.5)">
+              ℹ️ UI only — no real authentication. Data stays in your browser.
+            </small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    function switchTab(tab) {
+      if (tab === 'login') {
+        $("#loginTab").addClass("active"); $("#signupTab").removeClass("active");
+        $("#loginForm").show(); $("#signupForm").hide();
+      } else {
+        $("#signupTab").addClass("active"); $("#loginTab").removeClass("active");
+        $("#signupForm").show(); $("#loginForm").hide();
+      }
+    }
+
+    $("#loginTab").on("click", () => switchTab("login"));
+    $("#signupTab").on("click", () => switchTab("signup"));
+
+    function handleLogin() {
+      const email = $("#loginEmail").val().trim();
+      const pass  = $("#loginPassword").val().trim();
+      if (!email || !pass) { showToast("Please enter email and password.", "error"); return; }
+      if (!email.includes("@")) { showToast("Please enter a valid email.", "error"); return; }
+      // Simulate login
+      const $btn = $("#loginBtn");
+      $btn.prop("disabled", true).text("Logging in…");
+      setTimeout(() => {
+        showToast("Welcome back! Redirecting…", "success");
+        setTimeout(() => window.location.href = "index.html", 1000);
+      }, 1000);
+    }
+
+    function handleSignup() {
+      const first = $("#signupFirst").val().trim();
+      const email = $("#signupEmail").val().trim();
+      const pass  = $("#signupPassword").val().trim();
+      const conf  = $("#signupConfirm").val().trim();
+      if (!first || !email || !pass) { showToast("Please fill all required fields.", "error"); return; }
+      if (pass !== conf) { showToast("Passwords do not match.", "error"); return; }
+      if (!$("#agreeTerms").is(":checked")) { showToast("Please agree to Terms of Service.", "error"); return; }
+      showToast(`Account created for ${first}! Welcome! 🎉`, "success");
+      setTimeout(() => window.location.href = "index.html", 1200);
+    }
+
+    function socialLogin(provider) {
+      showToast(`Connecting with ${provider}… (UI demo)`, "info");
+      setTimeout(() => { showToast("Signed in successfully! ✅", "success"); setTimeout(() => window.location.href = "index.html", 800); }, 1000);
+    }
+  </script>
+</body>
+</html>

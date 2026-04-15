@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Select Ingredients — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container position-relative" style="z-index:1">
+      <h1>🥗 Select Your Ingredients</h1>
+      <p>Choose what's available in your kitchen — we'll find the perfect recipe!</p>
+    </div>
+  </div>
+
+  <!-- Step Progress -->
+  <div data-component="step-progress" data-active="1"></div>
+
+  <div class="container section-gap-sm">
+
+    <!-- Search + Category Filter -->
+    <div class="row align-items-center g-3 mb-4">
+      <div class="col-md-6">
+        <div class="position-relative">
+          <span style="position:absolute;left:14px;top:13px;font-size:1rem;">🔍</span>
+          <input type="text" id="ingSearch" class="form-control-custom ps-5"
+            placeholder="Search ingredients…" style="padding-left:42px !important;">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="cat-btn btn-primary-custom choice-chip selected active" data-cat="all">All</button>
+          <button class="cat-btn choice-chip" data-cat="vegetables">🥦 Veggies</button>
+          <button class="cat-btn choice-chip" data-cat="proteins">🍗 Proteins</button>
+          <button class="cat-btn choice-chip" data-cat="dairy">🧀 Dairy</button>
+          <button class="cat-btn choice-chip" data-cat="spices">🌶 Spices</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ingredients Grid -->
+    <div class="row g-2 mb-4" id="ingredientGrid">
+
+      <!-- Vegetables -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="tomato" data-name="Tomato" data-cat="vegetables">
+          <span>🍅</span> Tomato
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="potato" data-name="Potato" data-cat="vegetables">
+          <span>🥔</span> Potato
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="onion" data-name="Onion" data-cat="vegetables">
+          <span>🧅</span> Onion
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="spinach" data-name="Spinach" data-cat="vegetables">
+          <span>🥬</span> Spinach
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="capsicum" data-name="Capsicum" data-cat="vegetables">
+          <span>🫑</span> Capsicum
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="mushroom" data-name="Mushroom" data-cat="vegetables">
+          <span>🍄</span> Mushroom
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="corn" data-name="Corn" data-cat="vegetables">
+          <span>🌽</span> Corn
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="vegetables">
+        <div class="ingredient-tag w-100" data-id="carrot" data-name="Carrot" data-cat="vegetables">
+          <span>🥕</span> Carrot
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+
+      <!-- Proteins -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="proteins">
+        <div class="ingredient-tag w-100" data-id="paneer" data-name="Paneer" data-cat="proteins">
+          <span>🧀</span> Paneer
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="proteins">
+        <div class="ingredient-tag w-100" data-id="chicken" data-name="Chicken" data-cat="proteins">
+          <span>🍗</span> Chicken
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="proteins">
+        <div class="ingredient-tag w-100" data-id="lentils" data-name="Lentils" data-cat="proteins">
+          <span>🫘</span> Lentils
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="proteins">
+        <div class="ingredient-tag w-100" data-id="egg" data-name="Egg" data-cat="proteins">
+          <span>🥚</span> Egg
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+
+      <!-- Dairy -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="dairy">
+        <div class="ingredient-tag w-100" data-id="cream" data-name="Cream" data-cat="dairy">
+          <span>🥛</span> Cream
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="dairy">
+        <div class="ingredient-tag w-100" data-id="butter" data-name="Butter" data-cat="dairy">
+          <span>🧈</span> Butter
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="dairy">
+        <div class="ingredient-tag w-100" data-id="yogurt" data-name="Yogurt" data-cat="dairy">
+          <span>🍶</span> Yogurt
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="dairy">
+        <div class="ingredient-tag w-100" data-id="cashew" data-name="Cashew" data-cat="dairy">
+          <span>🥜</span> Cashew
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+
+      <!-- Spices -->
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="spices">
+        <div class="ingredient-tag w-100" data-id="garlic" data-name="Garlic" data-cat="spices">
+          <span>🧄</span> Garlic
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="spices">
+        <div class="ingredient-tag w-100" data-id="ginger" data-name="Ginger" data-cat="spices">
+          <span>🫚</span> Ginger
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="spices">
+        <div class="ingredient-tag w-100" data-id="chili" data-name="Chili" data-cat="spices">
+          <span>🌶️</span> Chili
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-3 col-lg-2 ing-item" data-cat="spices">
+        <div class="ingredient-tag w-100" data-id="lemon" data-name="Lemon" data-cat="spices">
+          <span>🍋</span> Lemon
+          <span class="checkmark ms-auto">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selected summary -->
+    <div class="alert" style="background:var(--primary-lt);border:1.5px solid var(--primary);border-radius:10px;color:var(--dark);" id="selectionInfo">
+      <strong class="text-primary"><span id="selectedCount">0</span> ingredients selected</strong>
+      <span class="text-muted ms-2" id="selectedNames"></span>
+    </div>
+
+    <!-- Action bar -->
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="index.html" class="btn btn-outline-secondary">← Back to Home</a>
+      <button class="btn btn-primary-custom btn-lg" id="nextBtn" disabled>
+        Next: Select Cuisine →
+      </button>
+    </div>
+  </div>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    $(document).ready(function () {
+      initIngredientPage();
+
+      // Override updateCounter to also show names
+      const $tags = $(".ingredient-tag");
+      function updateDisplay() {
+        const selected = $tags.filter(".selected");
+        const count = selected.length;
+        $("#selectedCount").text(count);
+        $("#nextBtn").prop("disabled", count === 0);
+        const names = selected.map(function() { return $(this).data("name"); }).get().join(", ");
+        $("#selectedNames").text(names ? `(${names})` : "");
+      }
+
+      $tags.off("click").on("click", function () {
+        $(this).toggleClass("selected");
+        updateDisplay();
+      });
+
+      // Category filter - also filter the parent col
+      $(".cat-btn").off("click").on("click", function () {
+        $(".cat-btn").removeClass("selected active");
+        $(this).addClass("selected active");
+        const cat = $(this).data("cat");
+        if (cat === "all") {
+          $(".ing-item").show();
+        } else {
+          $(".ing-item").hide().filter(`[data-cat="${cat}"]`).show();
+        }
+      });
+
+      // Search
+      $("#ingSearch").off("input").on("input", function () {
+        const q = $(this).val().toLowerCase();
+        $(".ing-item").each(function () {
+          const name = $(this).find(".ingredient-tag").data("name").toLowerCase();
+          $(this).toggle(name.includes(q));
+        });
+      });
+
+      // Next button
+      $("#nextBtn").off("click").on("click", function () {
+        const selected = $tags.filter(".selected").map(function () {
+          return $(this).data("id");
+        }).get();
+        sessionStorage.setItem("selectedIngredients", JSON.stringify(selected));
+        window.location.href = "cuisine.html";
+      });
+
+      // Restore previous selection
+      const saved = JSON.parse(sessionStorage.getItem("selectedIngredients") || "[]");
+      saved.forEach(id => $tags.filter(`[data-id="${id}"]`).addClass("selected"));
+      updateDisplay();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Preferences — RecipeAI</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div data-component="navbar"></div>
+
+  <div class="page-header">
+    <div class="container position-relative" style="z-index:1">
+      <h1>⚙️ Set Your Preferences</h1>
+      <p>Customize by dietary needs, spice tolerance &amp; available cooking time!</p>
+    </div>
+  </div>
+
+  <div data-component="step-progress" data-active="3"></div>
+
+  <div class="container section-gap-sm">
+    <div class="row g-4">
+
+      <!-- LEFT COLUMN: Diet Type + Spice Level -->
+      <div class="col-lg-6">
+
+        <!-- Diet Type -->
+        <div class="mb-4">
+          <h5 class="fw-bold mb-3">🥗 Diet Type</h5>
+          <div class="option-group">
+            <div class="option-row selected" data-group="diet" data-id="vegetarian">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Vegetarian</div>
+                <div class="opt-desc">Plant-based, no meat or fish</div>
+              </div>
+              <span class="ms-auto">🌿</span>
+            </div>
+            <div class="option-row" data-group="diet" data-id="non-vegetarian">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Non-Vegetarian</div>
+                <div class="opt-desc">Includes meat, poultry &amp; seafood</div>
+              </div>
+              <span class="ms-auto">🍗</span>
+            </div>
+            <div class="option-row" data-group="diet" data-id="vegan">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Vegan</div>
+                <div class="opt-desc">No animal products whatsoever</div>
+              </div>
+              <span class="ms-auto">🌱</span>
+            </div>
+            <div class="option-row" data-group="diet" data-id="eggetarian">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">Eggetarian</div>
+                <div class="opt-desc">Vegetarian + eggs allowed</div>
+              </div>
+              <span class="ms-auto">🥚</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spice Level -->
+        <div class="mb-4">
+          <h5 class="fw-bold mb-3">🌶️ Spice Level</h5>
+          <div class="chip-group" data-group="spice">
+            <div class="choice-chip" data-id="mild">
+              <span style="color:#f5a623">●</span> Mild
+            </div>
+            <div class="choice-chip selected" data-id="medium">
+              <span style="color:#f5742a">●</span> Medium
+            </div>
+            <div class="choice-chip" data-id="hot">
+              <span style="color:#e03020">●</span> Hot
+            </div>
+            <div class="choice-chip" data-id="extra-hot">
+              <span style="color:#a00010">●</span> Extra Hot
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Cooking Time + Serving Size -->
+      <div class="col-lg-6">
+
+        <!-- Cooking Time -->
+        <div class="mb-4">
+          <h5 class="fw-bold mb-3">⏱️ Cooking Time</h5>
+          <div class="option-group">
+            <div class="option-row" data-group="time" data-id="under-15">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">⚡ Under 15 minutes</div>
+                <div class="opt-desc">Super quick — for busy days</div>
+              </div>
+            </div>
+            <div class="option-row selected" data-group="time" data-id="15-30">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">🕒 15 – 30 minutes</div>
+                <div class="opt-desc">Quick but satisfying meals</div>
+              </div>
+            </div>
+            <div class="option-row" data-group="time" data-id="30-60">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">🍳 30 – 60 minutes</div>
+                <div class="opt-desc">Balanced cooking time</div>
+              </div>
+            </div>
+            <div class="option-row" data-group="time" data-id="over-60">
+              <div class="radio-dot"></div>
+              <div>
+                <div class="opt-label">🔥 Over 60 minutes</div>
+                <div class="opt-desc">Slow-cooked, complex dishes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Serving Size -->
+        <div class="mb-4">
+          <h5 class="fw-bold mb-3">👨‍👩‍👧 Serving Size</h5>
+          <div class="chip-group" data-group="serving">
+            <div class="choice-chip" data-id="1">1 person</div>
+            <div class="choice-chip selected" data-id="2">2 persons</div>
+            <div class="choice-chip" data-id="4">4 persons</div>
+            <div class="choice-chip" data-id="6">6+ persons</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary card -->
+    <div class="alert mb-4"
+      style="background:var(--primary-lt);border:1.5px solid var(--primary);border-radius:12px;padding:18px 20px;">
+      <h6 class="fw-bold text-primary mb-2">📋 Your Current Selection:</h6>
+      <div class="row g-2" id="prefSummary">
+        <div class="col-auto"><span class="badge bg-secondary" id="sumDiet">Vegetarian</span></div>
+        <div class="col-auto"><span class="badge bg-secondary" id="sumSpice">Medium Spice</span></div>
+        <div class="col-auto"><span class="badge bg-secondary" id="sumTime">15–30 min</span></div>
+        <div class="col-auto"><span class="badge bg-secondary" id="sumServing">2 persons</span></div>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between">
+      <a href="cuisine.html" class="btn btn-outline-secondary">← Back</a>
+      <button class="btn btn-primary-custom btn-lg" id="generateBtn">
+        ✨ Generate My Recipes
+      </button>
+    </div>
+  </div>
+
+  <div data-component="footer"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/recipes-data.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+    $(document).ready(function () {
+
+      function updateSummary() {
+        $("#sumDiet").text($(".option-row.selected[data-group='diet']").find(".opt-label").text() || "Any");
+        const spice = $(".chip-group[data-group='spice'] .choice-chip.selected").data("id");
+        const time  = $(".option-row.selected[data-group='time']").find(".opt-label").text();
+        const srv   = $(".chip-group[data-group='serving'] .choice-chip.selected").data("id");
+        if (spice) $("#sumSpice").text(spice.charAt(0).toUpperCase() + spice.slice(1) + " Spice");
+        if (time)  $("#sumTime").text(time);
+        if (srv)   $("#sumServing").text(srv + " person" + (srv > 1 ? "s" : ""));
+      }
+
+      // Restore saved preferences
+      const savedDiet    = sessionStorage.getItem("selectedDiet")    || "vegetarian";
+      const savedSpice   = sessionStorage.getItem("selectedSpice")   || "medium";
+      const savedTime    = sessionStorage.getItem("selectedTime")    || "15-30";
+      const savedServing = sessionStorage.getItem("selectedServing") || "2";
+
+      $(".option-row[data-group='diet']").removeClass("selected").filter(`[data-id="${savedDiet}"]`).addClass("selected");
+      $(".chip-group[data-group='spice'] .choice-chip").removeClass("selected").filter(`[data-id="${savedSpice}"]`).addClass("selected");
+      $(".option-row[data-group='time']").removeClass("selected").filter(`[data-id="${savedTime}"]`).addClass("selected");
+      $(".chip-group[data-group='serving'] .choice-chip").removeClass("selected").filter(`[data-id="${savedServing}"]`).addClass("selected");
+
+      updateSummary();
+
+      // Diet selection
+      $(".option-row").on("click", function () {
+        const group = $(this).data("group");
+        $(`[data-group="${group}"]`).removeClass("selected");
+        $(this).addClass("selected");
+        updateSummary();
+      });
+
+      // Chip selection
+      $(".chip-group .choice-chip").on("click", function () {
+        $(this).closest(".chip-group").find(".choice-chip").removeClass("selected");
+        $(this).addClass("selected");
+        updateSummary();
+      });
+
+      // Generate
+      $("#generateBtn").on("click", function () {
+        sessionStorage.setItem("selectedDiet",    $(".option-row.selected[data-group='diet']").data("id") || "vegetarian");
+        sessionStorage.setItem("selectedSpice",   $(".chip-group[data-group='spice'] .choice-chip.selected").data("id") || "medium");
+        sessionStorage.setItem("selectedTime",    $(".option-row.selected[data-group='time']").data("id") || "15-30");
+        sessionStorage.setItem("selectedServing", $(".chip-group[data-group='serving'] .choice-chip.selected").data("id") || "2");
+
+        $(this).html('<span class="spinner-border spinner-border-sm me-2"></span>Generating Recipes…').prop("disabled", true);
+        setTimeout(() => { window.location.href = "results.html"; }, 1200);
+      });
+    });
+  </script>
+</body>
+</html>
